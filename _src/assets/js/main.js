@@ -75,7 +75,6 @@ function addFav(ev) {
     if (fav.show.id === clickedId) {
       return true;
     }
-    return false;
   });
 
   if (clickedFav) {
@@ -83,7 +82,6 @@ function addFav(ev) {
       if (fav.show.id === clickedId) {
         return true;
       }
-      return false;
     });
     favs.splice(clickedFavIndex, 1);
     console.log("Lo saco");
@@ -92,7 +90,6 @@ function addFav(ev) {
       if (show.show.id === clickedId) {
         return true;
       }
-      return false;
     });
     favs.push(clickedShow);
     console.log(favs);
@@ -117,15 +114,17 @@ function addFav(ev) {
 //     }
 //   });
 
-//   const removeClickedFav = favs.filter(function(fav) {
-//     if (fav.show.id !== clickedId) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
+//   if (clickedFav) {
+//     favs.filter(function(fav) {
+//       if (fav.show.id === clickedId) {
+//         return false;
+//       } else {
+//         return true;
+//       }
+//     });
+//   }
 
-//   // }
+// }
 //   paintFavs();
 //   setFavData();
 // }

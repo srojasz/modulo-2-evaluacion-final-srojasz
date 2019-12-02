@@ -23,8 +23,15 @@ body {
 }
 
 .favs__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 15px;
   width: 50%;
+}
+
+.favs__list {
+  padding-inline-start: 0px;
 }
 
 .search {
@@ -53,6 +60,7 @@ body {
 
 .favs__title {
   font-size: 18px;
+  text-align: left;
 }
 
 .fav__item {
