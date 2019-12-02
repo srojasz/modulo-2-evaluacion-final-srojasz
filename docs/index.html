@@ -3,19 +3,38 @@
     
     <head>
         <meta charset="UTF-8" />
-        <title>Adalab Web Starter Kit</title>
+        <title>Buscador de series</title>
         <link rel="icon" href="./favicon.png" />
         <link rel="stylesheet" href="./assets/css/main.css" />
     </head>
     
     <body>
-        <div class="page">
-            <header class="page__header">Header</header>
-            <main class="page__main">Main</main> <a class="link__adalab" href="https://adalab.es" target="_blank">Adalab</a>
+        <header class="header">
+             <h1 class="search__title">
+      Buscador de series
+    </h1>
 
-            <a
-            class="link__github" href="https://github.com" target="_blank">GitHub</a>
-        </div>
+        </header>
+        <main class="main__container">
+            <div class="left-col">
+                <form class="search">
+                    <input type="text" class="search__input js-search__input" name="input"
+                    placeholder="Ej. Homeland">
+                    <button class="search__button js-search__button" type="submit">Buscar</button>
+                </form>
+                <section class="favs__container js-favs__container">
+                     <h2 class="favs__title">Mis series favoritas</h2>
+
+                    <ul class="favs__list js-favs__list"></ul>
+                </section>
+            </div>
+            <section class="shows__container js-shows__container">
+                 <h2>Series</h2>
+
+                <ul class="shows__list js-shows__list"></ul>
+            </section>
+        </main>
+        <script type="text/javascript" src="./assets/js/main.js"></script>
     </body>
 
 </html>
