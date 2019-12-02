@@ -146,8 +146,8 @@ function paintFavs() {
 
     htmlCode += `<li class="fav__item js-fav__item" id=${favId}>`;
     htmlCode += `<div class="fav__item__header">`;
-    htmlCode += `<h2>${favName}</h2>`;
-    htmlCode += `<p>X</p>`;
+    htmlCode += `<h2 class="fav__title">${favName}</h2>`;
+    htmlCode += `<p class="fav__close js-fav__close">X</p>`;
     htmlCode += `</div>`;
     htmlCode += `<img class="fav__img" src="${favImage}"/>`;
     htmlCode += "</li>";
@@ -169,11 +169,11 @@ function getFavData() {
   }
 }
 
-function listenFavs() {
-  for (const fav of favs) {
-    fav.addEventListener("click", setFavData);
-  }
-}
+// function listenFavs() {
+//   for (const fav of favs) {
+//     fav.addEventListener("click", setFavData);
+//   }
+// }
 
 // getServerData();
 getFavData();
