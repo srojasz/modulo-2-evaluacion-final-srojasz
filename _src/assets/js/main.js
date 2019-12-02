@@ -71,20 +71,16 @@ function listenShows() {
 
 function addFav(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
-  debugger;
+
   const clickedShow = shows.find(function(show) {
     if (show.show.id === clickedId) {
       return true;
-    } else {
-      return false;
     }
   });
 
   const clickedFav = favs.find(function(fav) {
     if (fav.show.id === clickedId) {
       return true;
-    } else {
-      return false;
     }
   });
 
