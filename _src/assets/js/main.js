@@ -11,9 +11,9 @@ const input = document.querySelector(".js-search__input");
 
 const searchButton = document.querySelector(".js-search__button");
 
-const showsContainer = document.querySelector(".js-shows__container");
-
 const showsList = document.querySelector(".js-shows__list");
+
+const favsList = document.querySelector(".js-favs__list");
 
 // Fetch que se ejecuta cuando hagamos click en buscar
 
@@ -71,12 +71,79 @@ function listenShows() {
 
 function addFav(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
-
+  debugger;
   const clickedShow = shows.find(function(show) {
     if (show.show.id === clickedId) {
       return true;
+    } else {
+      return false;
     }
   });
-  favs.push(clickedShow);
-  console.log(favs);
+
+  const clickedFav = favs.find(function(fav) {
+    if (fav.show.id === clickedId) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  if (clickedShow === clickedFav) {
+    favs.splice(clickedFav, 1);
+    console.log("Lo saco", clickedFav);
+  } else {
+    favs.push(clickedShow);
+    console.log(favs);
+  }
+  paintFavs();
+  setFavData();
 }
+
+// Pintar favoritos
+
+function paintFavs() {
+  let htmlCode = "";
+  for (let i = 0; i < favs.length; i++) {
+    let favName = favs[i].show.name;
+    let favId = favs[i].show.id;
+    let favImage = favs[i].show.image;
+
+    if (favImage === null) {
+      favImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+    } else {
+      favImage = favImage.medium;
+    }
+
+    htmlCode += `<li class="fav__item js-fav__item" id=${favId}>`;
+    htmlCode += `<div class="fav__item__header">`;
+    htmlCode += `<h2>${favName}</h2>`;
+    htmlCode += `<p>X</p>`;
+    htmlCode += `</div>`;
+    htmlCode += `<img class="fav__img" src="${favImage}"/>`;
+    htmlCode += "</li>";
+  }
+  favsList.innerHTML = htmlCode;
+}
+
+function setFavData() {
+  localStorage.setItem("favs", JSON.stringify(favs));
+}
+
+function getFavData() {
+  const lsFavs = localStorage.getItem("favs");
+  const lsFavShows = JSON.parse(lsFavs);
+  if (lsFavShows !== null) {
+    favs = lsFavShows;
+
+    paintFavs();
+  }
+}
+
+function listenFavs() {
+  for (const fav of favs) {
+    fav.addEventListener("click", setFavData);
+  }
+}
+
+// getServerData();
+getFavData();
