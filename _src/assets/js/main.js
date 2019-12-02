@@ -60,6 +60,7 @@ function listenShows() {
 }
 
 function addFav(ev) {
+  debugger;
   const clickedId = parseInt(ev.currentTarget.id);
   favs.push(parseInt(clickedId));
   for (const fav of favs) {
