@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Adalab Web Starter Kit</title>
-    <link rel="icon" href="./favicon.png" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-  </head>
-  <body>
-    <div class="page">
-      <partial src="_header.html" label="Header"></partial>
-      <partial src="_main.html" label="Main"></partial>
-      <partial src="_link.html" aClass="link__adalab" text="Adalab" url="https://adalab.es"></partial>
-      <partial src="_link.html" aClass="link__github" text="GitHub" url="https://github.com"></partial>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Buscador de series</title>
+  <link rel="icon" href="./favicon.png" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+
+<body>
+
+  <header class="search">
+    <h1 class="search__title">
+      Buscador de series
+    </h1>
+    <section class="searc__container">
+      <input type="text" class="search__input js-search__input" name="input" placeholder="Ej. Homeland">
+      <button class="search__button js-search__button" type="submit">Buscar</button>
+    </section>
+    <main class="main">
+      <section class="favs__container js-favs__container">
+        <h2>Favoritos</h2>
+        <ul class="favs__list js-favs__list">
+
+        </ul>
+
+      </section>
+      <section class="shows__container js-shows__container">
+        <h2>Películas</h2>
+        <ul class="shows__list js-shows__list">
+
+        </ul>
+
+      </section>
+
+    </main>
+  </header>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+</body>
+
 </html>
