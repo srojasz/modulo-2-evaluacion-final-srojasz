@@ -71,29 +71,64 @@ function listenShows() {
 
 function addFav(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
-
-  const clickedShow = shows.find(function(show) {
-    if (show.show.id === clickedId) {
-      return true;
-    }
-  });
-
   const clickedFav = favs.find(function(fav) {
     if (fav.show.id === clickedId) {
       return true;
     }
+    return false;
   });
 
-  if (clickedShow === clickedFav) {
-    favs.splice(clickedFav, 1);
-    console.log("Lo saco", clickedFav);
+  if (clickedFav) {
+    const clickedFavIndex = favs.findIndex(function(fav) {
+      if (fav.show.id === clickedId) {
+        return true;
+      }
+      return false;
+    });
+    favs.splice(clickedFavIndex, 1);
+    console.log("Lo saco");
   } else {
+    const clickedShow = shows.find(function(show) {
+      if (show.show.id === clickedId) {
+        return true;
+      }
+      return false;
+    });
     favs.push(clickedShow);
     console.log(favs);
   }
+
   paintFavs();
   setFavData();
 }
+
+// function addFav(ev) {
+//   const clickedId = parseInt(ev.currentTarget.id);
+
+//   const clickedShow = shows.find(function(show) {
+//     if (show.show.id === clickedId) {
+//       return true;
+//     }
+//   });
+
+//   const clickedFav = favs.find(function(fav) {
+//     if (fav.show.id === clickedId) {
+//       return true;
+//     }
+//   });
+
+//   const removeClickedFav = favs.filter(function(fav) {
+//     if (fav.show.id !== clickedId) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+
+//   // }
+//   paintFavs();
+//   setFavData();
+// }
 
 // Pintar favoritos
 
