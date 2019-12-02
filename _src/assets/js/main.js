@@ -1,7 +1,11 @@
 "use strict";
 
+// Arrays
+
 let shows = [];
 let favs = [];
+
+// Variables globales
 
 const input = document.querySelector(".js-search__input");
 
@@ -10,6 +14,8 @@ const searchButton = document.querySelector(".js-search__button");
 const showsContainer = document.querySelector(".js-shows__container");
 
 const showsList = document.querySelector(".js-shows__list");
+
+// Fetch que se ejecuta cuando hagamos click en buscar
 
 function getServerData(event) {
   let inputValue = input.value;
@@ -29,6 +35,8 @@ function getServerData(event) {
     });
 }
 searchButton.addEventListener("click", getServerData);
+
+// Pintar y escuchar Shows
 
 function paintShows() {
   let htmlCode = "";
@@ -59,18 +67,16 @@ function listenShows() {
   }
 }
 
+// Añadir favorito al array (objeto completo)
+
 function addFav(ev) {
-  debugger;
   const clickedId = parseInt(ev.currentTarget.id);
-  favs.push(parseInt(clickedId));
-  for (const fav of favs) {
-    if (clickedId === fav) {
-      favs.splice(clickedId, 1);
-      console.log("Soy ya un favorito");
-      console.log(favs);
-    } else {
-      favs.push(parseInt(clickedId));
+
+  const clickedShow = shows.find(function(show) {
+    if (show.show.id === clickedId) {
+      return true;
     }
-  }
-  console.log("Añado fav", ev.currentTarget.id, favs);
+  });
+  favs.push(clickedShow);
+  console.log(favs);
 }
