@@ -5,7 +5,10 @@
         <meta charset="UTF-8" />
         <title>Buscador de series</title>
         <link rel="icon" href="./favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap"
+        rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/main.css" />
+        <script src="https://kit.fontawesome.com/b9e106a0ae.js" crossorigin="anonymous"></script>
     </head>
     
     <body>
@@ -23,16 +26,19 @@
         <main class="main__container">
             <div class="left-col">
                 <section class="favs__container js-favs__container">
-                     <h2 class="favs__title">Mis series favoritas</h2>
+                     <h2 class="favs__title">Mis series favoritas:</h2>
+ <a class="reset__btn js-reset__btn" href="">Borrar</a>
 
                     <ul class="favs__list js-favs__list"></ul>
                 </section>
             </div>
-            <section class="shows__container js-shows__container">
-                 <h2>Series</h2>
+            <div class="right-col">
+                <section class="shows__container js-shows__container">
+                     <h2 class="shows__title">Series:</h2>
 
-                <ul class="shows__list js-shows__list"></ul>
-            </section>
+                    <ul class="shows__list js-shows__list"></ul>
+                </section>
+            </div>
         </main>
         <script type="text/javascript" src="./assets/js/main.js"></script>
     </body>
