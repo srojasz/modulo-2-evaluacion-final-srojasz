@@ -8,15 +8,10 @@ let favs = [];
 // Variables globales
 
 const input = document.querySelector(".js-search__input");
-
 const searchButton = document.querySelector(".js-search__button");
-
 const showsList = document.querySelector(".js-shows__list");
-
 const favsList = document.querySelector(".js-favs__list");
-
 const showItems = document.querySelectorAll(".js-show__item");
-
 const resetButton = document.querySelector(".reset__btn");
 
 // Fetch que se ejecuta cuando hagamos click en buscar
@@ -33,6 +28,7 @@ function getServerData(event) {
       shows = serverData;
       paintShows();
       listenShows();
+      listenFavs();
     })
     .catch(function(err) {
       console.log("Error al traer los datos del servidor", err);
@@ -75,7 +71,6 @@ function paintShows() {
 
 function listenShows() {
   const showsItems = document.querySelectorAll(".js-show__item");
-
   for (const showItem of showsItems) {
     showItem.addEventListener("click", addFav);
   }
@@ -90,7 +85,6 @@ function addFav(ev) {
       return true;
     }
   });
-
   if (clickedFav) {
     const clickedFavIndex = favs.findIndex(function(fav) {
       if (fav.show.id === clickedId) {
@@ -98,7 +92,6 @@ function addFav(ev) {
       }
     });
     favs.splice(clickedFavIndex, 1);
-    console.log("Lo saco");
   } else {
     const clickedShow = shows.find(function(show) {
       if (show.show.id === clickedId) {
@@ -106,19 +99,21 @@ function addFav(ev) {
       }
     });
     favs.push(clickedShow);
-    console.log(favs);
   }
 
   paintShows();
   listenShows();
+  listenFavs();
   paintFavs();
   setFavData();
+}
 
-  // const closeButtons = document.querySelectorAll(".js-fav__close");
-  // for (const closeButton of closeButtons) {
-  //   console.log("holi");
-  //   closeButton.addEventListener("click", addFav);
-  // }
+const favItems = document.querySelectorAll(".js-fav__item");
+function listenFavs() {
+  debugger;
+  for (const favItem of favItems) {
+    favItem.addEventListener("click", addFav);
+  }
 }
 
 // Pintar favoritos
@@ -139,13 +134,16 @@ function paintFavs() {
     htmlCode += `<li class="fav__item js-fav__item" id=${favId}>`;
     htmlCode += `<div class="fav__item__header">`;
     htmlCode += `<h2 class="fav__title">${favName}</h2>`;
-    htmlCode += `<div class="fav__close js-fav__close">X</div>`;
+    htmlCode += `<i class="js-trash fas fa-trash"></i>`;
     htmlCode += `</div>`;
     htmlCode += `<img class="fav__img" src="${favImage}"/>`;
     htmlCode += "</li>";
   }
+
   favsList.innerHTML = htmlCode;
 }
+
+// Local Storage
 
 function setFavData() {
   localStorage.setItem("favs", JSON.stringify(favs));
@@ -161,12 +159,16 @@ function getFavData() {
   }
 }
 
+// Botón reset
+
 function resetFavs(ev) {
   ev.preventDefault();
   favs = [];
   paintFavs();
+  setFavData();
 }
 resetButton.addEventListener("click", resetFavs);
 
-// getServerData();
+//Funciones que arrancan al cargar la página
+
 getFavData();
