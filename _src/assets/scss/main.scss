@@ -94,3 +94,49 @@ body {
   font-weight: bold;
   font-size: 20px;
 }
+
+.shows__container {
+  margin-top: 15px;
+}
+
+.shows__title {
+  font-size: 18px;
+}
+
+.show__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  font-size: 16px;
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__fav {
+    background-color: purple;
+    color: white;
+  }
+}
+
+.reset__btn {
+  width: 100px;
+  height: 30px;
+  background-color: purple;
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.fav__close {
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  text-align: center;
+  background-color: pink;
+}
