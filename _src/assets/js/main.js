@@ -28,7 +28,6 @@ function getServerData(event) {
       shows = serverData;
       paintShows();
       listenShows();
-      listenFavs();
     })
     .catch(function(err) {
       console.log("Error al traer los datos del servidor", err);
@@ -36,7 +35,7 @@ function getServerData(event) {
 }
 searchButton.addEventListener("click", getServerData);
 
-// Pintar y escuchar Shows
+// Pintar Shows
 
 function paintShows() {
   let htmlCode = "";
@@ -69,10 +68,19 @@ function paintShows() {
   showsList.innerHTML = htmlCode;
 }
 
+// Escuchar Shows y Favs
+
 function listenShows() {
   const showsItems = document.querySelectorAll(".js-show__item");
   for (const showItem of showsItems) {
     showItem.addEventListener("click", addFav);
+  }
+}
+
+function listenFavs() {
+  const favItems = document.querySelectorAll(".js-fav__item");
+  for (const favItem of favItems) {
+    favItem.addEventListener("click", addFav);
   }
 }
 
@@ -103,17 +111,8 @@ function addFav(ev) {
 
   paintShows();
   listenShows();
-  listenFavs();
   paintFavs();
   setFavData();
-}
-
-const favItems = document.querySelectorAll(".js-fav__item");
-function listenFavs() {
-  debugger;
-  for (const favItem of favItems) {
-    favItem.addEventListener("click", addFav);
-  }
 }
 
 // Pintar favoritos
@@ -131,16 +130,17 @@ function paintFavs() {
       favImage = favImage.medium;
     }
 
-    htmlCode += `<li class="fav__item js-fav__item" id=${favId}>`;
+    htmlCode += `<li class="fav__item">`;
     htmlCode += `<div class="fav__item__header">`;
     htmlCode += `<h2 class="fav__title">${favName}</h2>`;
-    htmlCode += `<i class="js-trash fas fa-trash"></i>`;
+    htmlCode += `<i class="js-trash fas fa-trash js-fav__item" id="${favId}"></i>`;
     htmlCode += `</div>`;
     htmlCode += `<img class="fav__img" src="${favImage}"/>`;
     htmlCode += "</li>";
   }
 
   favsList.innerHTML = htmlCode;
+  listenFavs();
 }
 
 // Local Storage

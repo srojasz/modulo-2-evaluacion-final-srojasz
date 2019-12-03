@@ -5,14 +5,12 @@
 body {
   margin: 0;
   padding: 0 20px;
-  height: 100vh;
   font-family: "Patrick Hand", cursive;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 
@@ -58,8 +56,7 @@ body {
 .left-col {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: ce;
+  justify-content: flex-start;
   width: 50%;
   margin-right: 30px;
   background-color: lightgray;
@@ -70,6 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   padding: 15px;
   width: 50%;
 }
@@ -87,8 +85,8 @@ body {
 .fav__item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding-left: 10px;
   color: white;
   background-color: darkmagenta;
