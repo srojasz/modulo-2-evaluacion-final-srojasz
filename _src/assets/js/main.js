@@ -13,6 +13,8 @@ const showsList = document.querySelector(".js-shows__list");
 const favsList = document.querySelector(".js-favs__list");
 const showItems = document.querySelectorAll(".js-show__item");
 const resetButton = document.querySelector(".reset__btn");
+const defaultImage =
+  "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
 
 // Fetch que se ejecuta cuando hagamos click en buscar
 
@@ -50,7 +52,7 @@ function paintShows() {
     const isFav = indexShow !== -1;
 
     if (showImage === null) {
-      showImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      showImage = defaultImage;
     } else {
       showImage = showImage.medium;
     }
@@ -125,7 +127,7 @@ function paintFavs() {
     let favImage = favs[i].show.image;
 
     if (favImage === null) {
-      favImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      favImage = defaultImage;
     } else {
       favImage = favImage.medium;
     }
